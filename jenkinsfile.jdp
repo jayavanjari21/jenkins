@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage('stage-1-pull'){
             steps{
-                git branch: 'devops', url: 'https://github.com/jayavanjari21/jenkins.git'
+                git branch: 'devops', url: 'https://github.com/abhilashmwaghmare/EASY_CRUD.git'
             }
         
          }stage('stage-2-build'){
