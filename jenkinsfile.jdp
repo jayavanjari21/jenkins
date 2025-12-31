@@ -4,7 +4,7 @@ pipeline{
         
        stage('stage-1-pull'){
             steps{
-                git branch: 'devops', url: 'https://github.com/abhilashmwaghmare/EASY_CRUD.git'
+                echo 'pull successfull'
             }
         }
        
