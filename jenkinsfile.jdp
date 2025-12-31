@@ -8,17 +8,17 @@ pipeline{
         
          }stage('stage-2-build'){
             steps{
-                echo 'build success'
+                echo 'build successfull'
             }
         }
         stage('stage-3-test'){
             steps{
-                echo 'test success'
+                echo 'test successfull'
             }
         }
         stage('stage-4-deploy'){
             steps{
-                echo 'deploy done'
+                echo 'deploy successfull'
             }
         }
     }
