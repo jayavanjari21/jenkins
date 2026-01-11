@@ -1,0 +1,35 @@
+pipeline {
+    agent any
+
+    environment {
+        AWS_ACCESS_KEY_ID     = credentials('AWS_ACCESS_KEY_ID')
+        AWS_SECRET_ACCESS_KEY = credentials('AWS_SECRET_ACCESS_KEY')
+        AWS_DEFAULT_REGION    = 'eu-north-1'
+    }
+
+    stages {
+
+        stage('Pull Code') {
+            steps {
+                git branch: 'devops',
+                    url: 'https://github.com/abhilashmwaghmare/cdeb45-jenkins-offline.git'
+            }
+        }
+
+        stage('Terraform Init & Plan') {
+            steps {
+                sh '''
+                  terraform init
+                  terraform plan
+                '''
+            }
+        }
+
+        stage('Terraform Apply') {
+            steps {
+                input message: 'Do you want to deploy EKS?'
+                sh 'terraform apply -auto-approve'
+            }
+        }
+    }
+}
